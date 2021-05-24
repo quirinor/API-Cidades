@@ -1,0 +1,24 @@
+
+
+
+//acessar o docker com terminal 
+docker run -it --rm --net=host postgres /bin/bash
+
+
+
+
+
+docker run -it --rm --net=host -v cities-db:/tmp postgres /bin/bash
+
+Para que vc tenha a informação do destino você precisa saber o nome do seu docker
+docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.Names}}"
+
+CONTAINER ID   IMAGE      NAMES
+d08e77ad659a   postgres   cities-db
+
+No meu caso o nome é cities-db por isso usei para poder copiar os arquivos 
+
+
+docker cp C:\Mlk\BootCamp\InformacoesParaBancoDeDados\cidade.sql cities-db:/tmp
+docker cp C:\Mlk\BootCamp\InformacoesParaBancoDeDados\estado.sql cities-db:/tmp
+docker cp C:\Mlk\BootCamp\InformacoesParaBancoDeDados\pais.sql cities-db:/tmp
